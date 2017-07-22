@@ -1,4 +1,6 @@
 # Minesweeper
+[![Build Status](https://travis-ci.com/d8660091/minesweeper.svg?token=poM8cpAzssr1tR1xqCdN&branch=master)](https://travis-ci.com/d8660091/minesweeper)
+[![Coverage Status](https://coveralls.io/repos/github/d8660091/minesweeper/badge.svg?t=RwWiOT)](https://coveralls.io/github/d8660091/minesweeper)
 
 A minesweeper game built with Django Channel and Vue
 
@@ -10,14 +12,24 @@ A minesweeper game built with Django Channel and Vue
 pip install -r requirements/dev.txt
 ```
 
-3. Run local server
+3. Run the dev server
 
 ``` shell
 python manage.py runserver
 ```
 
 ## Test
-Test
+Just run test
+
+``` shell
+tox
+```
+
+You can view the coverage report with
+
+``` shell
+coverage report
+```
 
 ## Frontend
 Connect to backend with

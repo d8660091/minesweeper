@@ -2,7 +2,7 @@
   console.log('here');
 
   const webSocketBridge = new channels.WebSocketBridge();
-  webSocketBridge.connect('/minesweeper/');
+  webSocketBridge.connect('/minesweeper/stream/123')
   webSocketBridge.listen(function(action, stream) {
     console.log('received', action, stream);
   });

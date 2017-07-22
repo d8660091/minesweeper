@@ -13,7 +13,7 @@ class Game():
     """The game object."""
 
     game_map = None
-    # game_mask is an array with the same shape as game_map, the visible tile are annotated with 1
+    # game_mask is an array with the same shape as game_map, visible: 1, marked mines: -1
     game_mask = None
 
     def new(self, w, h, mines_total):
@@ -37,12 +37,22 @@ class Game():
                     if (0 <= i < h) and (0 <= j < w) and self.game_map[i, j] != -1:
                         self.game_map[i, j] += 1
 
+    def mark(self, x, y):
+        if self.get_user_map()[x, y] > 0:
+            return
+        elif self.get_user_map()[x, y] == -1:
+            self.game_mask[x, y] = 0
+        else:
+            self.game_mask[x, y] = -1
+
     def reveal(self, x, y):
         """Reveal the clicked tile"""
 
         (h, w) = self.game_map.shape
-        if self.game_mask[x, y] > 0 or self.game_map[x, y] < 0:
-            return
+        if self.game_mask[x, y] != 0:
+            return True
+        elif self.game_map[x, y] < 0:
+            return False
         elif self.game_map[x, y] > 0:
             self.game_mask[x, y] = 1
         else:
@@ -58,6 +68,8 @@ class Game():
         for (x, y), value in np.ndenumerate(self.game_map):
             if (self.game_mask[x, y] > 0):
                 user_map[x, y] = self.game_map[x, y]
+            elif (self.game_mask[x, y] == -1):
+                user_map[x, y] = -1
             else:
                 user_map[x, y] = -2
 

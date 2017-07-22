@@ -15,7 +15,7 @@ def send_update(sender, instance, **kwargs):
     Group(game_id).send({
         "text": json.dumps({
             'type': 'game_change',
-            'data': game.game_map.tolist(),
+            'data': game.get_user_map().tolist(),
         })
     })
 
@@ -38,11 +38,24 @@ class GameConsumer(JsonWebsocketConsumer):
         Group(kwargs['game_id']).add(message.reply_channel)
         game = Game()
         game.load(kwargs['game_id'])
-        game.new(5, 5, 5)
+        game.new(16, 16, 40)
         game.save()
 
     def receive(self, content, **kwargs):
-        print(content)
+        game = Game()
+        game.load(kwargs['game_id'])
+        if content['type'] == 'reveal':
+            x = content['data']['x']
+            y = content['data']['y']
+            if game.reveal(x, y):
+                pass
+            else:
+                game.save()
+        elif content['type'] == 'mark':
+            x = content['data']['x']
+            y = content['data']['y']
+            game.mark(x, y)
+            game.save()
 
     def disconnect(self, message, **kwargs):
         Group(kwargs['game_id']).discard(message.reply_channel)

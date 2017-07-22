@@ -3,6 +3,18 @@
 
 {% block content %}
   Minesweeper game
+  <div class="minesweeper">
+    <div v-for="(row, x) in map"
+      class="minesweeper__row">
+      <div v-for="(column, y) in row"
+        :class="'minesweeper__tile' + map[x][y]"
+        @mousedown.left="handleTileClick(x, y)"
+        @click.middle="handleTileClickMiddle(x, y)"
+        @contextmenu.prevent="handleTileClickRight(x, y)"
+      >
+      </div>
+    </div>
+  </div>
   <script src="{% static "channels/js/websocketbridge.js" %}"></script>
   <script src="{% static "js/minesweeper.js" %}"></script>
 {% endblock %}

@@ -98,3 +98,50 @@ class GameTests(TestCase):
                                      [-2, -2, -2],
                                      [-2, -2, -2]]))
         )
+
+    def test_game_reveal_return_false(self):
+        game = Game()
+        game.new(3, 3, 1)
+        game.game_map = np.array([[-1, 0, 0],
+                                  [0, -1, 0],
+                                  [0, 0, 0]])
+        game.flush()
+        game.reveal(0, 0)
+        self.assertFalse(game.reveal(0, 0))
+
+    def test_game_mark_mine(self):
+        game = Game()
+        game.new(3, 3, 1)
+        game.game_map = np.array([[-1, 0, 0],
+                                  [0, -1, 0],
+                                  [0, 0, 0]])
+        game.flush()
+        game.mark(0, 0)
+        self.assertEqual(game.game_mask[0, 0], -1)
+
+    def test_game_reveal_does_not_overide_user_marks(self):
+        game = Game()
+        game.new(3, 3, 1)
+        game.game_map = np.array([[0, 0, 0],
+                                  [0, 0, 0],
+                                  [0, 0, -1]])
+        game.flush()
+        game.game_mask[1, 0] = -1
+        game.reveal(0, 0)
+        self.assertTrue(
+            np.array_equal(game.get_user_map(),
+                           np.array([[0, 0, 0],
+                                     [-1, 1, 1],
+                                     [-2, -2, -2]]))
+        )
+
+    def test_game_does_not_mark_digits(self):
+        game = Game()
+        game.new(3, 3, 1)
+        game.game_map = np.array([[0, 0, 0],
+                                  [0, 0, 0],
+                                  [0, 0, -1]])
+        game.flush()
+        game.game_mask[1, 1] = 1
+        game.mark(1, 1)
+        self.assertEqual(game.get_user_map()[1, 1], 1)

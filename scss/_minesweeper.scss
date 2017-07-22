@@ -1,0 +1,32 @@
+.minesweeper__row {
+    line-height: 16px;
+    height: 16px;
+}
+
+@for $i from 0 through 8 {
+    .minesweeper__tile#{$i} {
+        background-image: url('../images/sprite100.gif');
+        background-position: 0px - 16 * $i -23px;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+    }
+}
+
+// mine
+.minesweeper__tile-1 {
+    background-image: url('../images/sprite100.gif');
+    background-position: -16px -39px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+// black
+.minesweeper__tile-2 {
+    background-image: url('../images/sprite100.gif');
+    background-position: 0 -39px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}

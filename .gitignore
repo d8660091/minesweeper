@@ -1,7 +1,9 @@
 __pycache__
 *.pyc
-*.db
+db.sqlite3
 .tox
 .sass-cache
+.coverage
+htmlcov
 static/js/lib
 README.html

@@ -26,10 +26,6 @@ class GameConsumer(JsonWebsocketConsumer):
     # channel_session = True
     # strict_ordering = True
 
-    def handle_request(self, request, data):
-        if request == 'reveal':
-            return self.game.get_user_map().tolist()
-
     def connection_groups(self, **kwargs):
         return ['test']
 

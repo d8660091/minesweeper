@@ -31,13 +31,23 @@ Game data is stored in sqlite3, but can be easily changed to other databases if 
 
 ## Map
 
-Rendered game:
+Rendered game 1:
 
 ![rendered-game][example-game]
 
-Corresponding data:
+Corresponding data 2:
 
 ![data][example-data]
 
+Rendered game 2:
+
+![rendered-game-2][example-game-2]
+
+Corresponding data 2 (viewed by user):
+
+![data][example-data-2]
+
 [example-game]: http://i.imgur.com/7Lj4oZC.png
 [example-data]: http://imgur.com/1aY4eXw.png
+[example-game-2]: http://imgur.com/JNVKCjA.png
+[example-data-2]: http://imgur.com/XhEpOhD.png

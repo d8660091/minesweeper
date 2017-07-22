@@ -1,5 +1,11 @@
 APP_LIST ?= mysite minesweeper
 
+.PHONY: install test ci
+
+install:
+	pip install -r requirements/dev.txt
+	npm install
+
 migrations-check:
 	python manage.py makemigrations --check --dry-run
 

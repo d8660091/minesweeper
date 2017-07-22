@@ -16,6 +16,9 @@ pip install -r requirements/dev.txt
 python manage.py runserver
 ```
 
+## Test
+Test
+
 ## Frontend
 Connect to backend with
 

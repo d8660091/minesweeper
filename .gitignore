@@ -1,6 +1,7 @@
 __pycache__
 *.pyc
 *.db
+.tox
 .sass-cache
 static/js/lib
 README.html

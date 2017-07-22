@@ -3,7 +3,10 @@ dist: trusty
 language: python
 python:
   - "3.6"
+env:
+  - TOXENV=py36
 install:
   - pip install coveralls tox
 script:
   - tox
+after_success: coveralls

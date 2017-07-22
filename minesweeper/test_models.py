@@ -1,23 +1,25 @@
 from django.test import TestCase
 
 import numpy as np
-from .consumers import Game
+from .models import Game
 
 
 class GameTests(TestCase):
 
     def test_game_can_construct_map_by_parameters(self):
-        game = Game(4, 5, 5)
+        game = Game()
+        game.new(4, 5, 5)
         self.assertEqual(game.game_map.shape, (5, 4))
         self.assertEqual(game.game_mask.shape, (5, 4))
         self.assertEqual(game.game_mask[0, 0], 0)
 
     def test_game_can_handle_too_big_mines_total(self):
-        game = Game(3, 5, 99)
+        game = Game()
+        game.new(3, 5, 99)
         self.assertEqual(game.game_map.shape, (5, 3))
 
     def test_game_can_flush_map_correctly(self):
-        game = Game(5, 5, 1)
+        game = Game()
         game.game_map = np.array([[0, 0], [0, -1]])
         game.flush()
         self.assertTrue(
@@ -26,7 +28,7 @@ class GameTests(TestCase):
         )
 
     def test_game_can_flush_map_correctly_2(self):
-        game = Game(5, 5, 1)
+        game = Game()
         game.game_map = np.array([[0, -1, 0],
                                   [0, 0, -1],
                                   [0, -1, 0]])
@@ -39,7 +41,8 @@ class GameTests(TestCase):
         )
 
     def test_game_reveal_a_tile(self):
-        game = Game(3, 3, 0)
+        game = Game()
+        game.new(3, 3, 1)
         game.game_map = np.array([[0, 0, -1],
                                   [0, 0, 0],
                                   [0, 0, -1]])
@@ -53,7 +56,8 @@ class GameTests(TestCase):
         )
 
     def test_game_reveal_a_tile_2(self):
-        game = Game(3, 3, 0)
+        game = Game()
+        game.new(3, 3, 1)
         game.game_map = np.array([[0, 0, 0],
                                   [0, -1, 0],
                                   [0, 0, 0]])
@@ -67,7 +71,8 @@ class GameTests(TestCase):
         )
 
     def test_game_return_user_map(self):
-        game = Game(3, 3, 0)
+        game = Game()
+        game.new(3, 3, 1)
         game.game_map = np.array([[0, 0, 0],
                                   [0, -1, 0],
                                   [0, 0, 0]])
@@ -80,7 +85,8 @@ class GameTests(TestCase):
         )
 
     def test_game_return_user_map_2(self):
-        game = Game(3, 3, 0)
+        game = Game()
+        game.new(3, 3, 1)
         game.game_map = np.array([[0, 0, 0],
                                   [0, -1, 0],
                                   [0, 0, 0]])

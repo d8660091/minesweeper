@@ -1,13 +1,19 @@
 (function(){
-  console.log('here');
+  console.log('js start loading');
 
   const webSocketBridge = new channels.WebSocketBridge();
-  webSocketBridge.connect('/minesweeper/stream/123')
+  webSocketBridge.connect('/minesweeper/stream/4')
   webSocketBridge.listen(function(action, stream) {
-    console.log('received', action, stream);
+    console.log('received message', action, stream);
   });
 
   webSocketBridge.socket.addEventListener('open', function() {
-    webSocketBridge.send({prop1: 'value1', prop2: 'value1'});
+    console.log('connection opened');
+    webSocketBridge.send({
+      request: 'reveal',
+      data: {
+        position: [0, 0],
+      }
+    });
   })
 })()

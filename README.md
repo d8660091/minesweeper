@@ -35,7 +35,7 @@ Rendered game 1:
 
 ![rendered-game][example-game]
 
-Corresponding data 2:
+Corresponding data 2 (-1 means mine):
 
 ![data][example-data]
 
@@ -43,7 +43,7 @@ Rendered game 2:
 
 ![rendered-game-2][example-game-2]
 
-Corresponding data 2 (viewed by user):
+Corresponding data 2 (viewed by user, -2 means hidden):
 
 ![data][example-data-2]
 

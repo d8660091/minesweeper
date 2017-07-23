@@ -193,3 +193,10 @@ class GameTests(TestCase):
         self.assertEqual(game.game_mask[0, 0], 0)
         game.reveal(0, 0)
         self.assertEqual(game.game_mask[0, 0], 0)
+
+    def test_unmark_mine(self):
+        game = Game()
+        game.new(3, 3, 1)
+        game.game_mask[0, 0] = -1
+        game.mark(0, 0)
+        self.assertEqual(game.game_mask[0, 0], 0)

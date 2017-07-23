@@ -2,7 +2,18 @@
 [![Build Status](https://travis-ci.com/d8660091/minesweeper.svg?token=poM8cpAzssr1tR1xqCdN&branch=master)](https://travis-ci.com/d8660091/minesweeper)
 [![Coverage Status](https://coveralls.io/repos/github/d8660091/minesweeper/badge.svg?t=RwWiOT)](https://coveralls.io/github/d8660091/minesweeper)
 
-A minesweeper game built with Django Channel and Vue
+A multiplayer online minesweeper game built with Django Channel and Vue
+
+## Introduction
+
+### Vue
+Vue is used for rendering the game graphics. But the priority for frontend is not high since it's much more important to guarantee bug-free backend, so webpack with live reloading is not set.
+
+### Database
+Sqlite3 is used for prototyping. Postgres or Mysql may be used for production.
+
+### Django Channel and Websocket
+Websocket is used to provide a stable, low-latency, bi-directional connection. Users can play the game in browser without noticing the game core is on the backend. Django Channel is responsible for handling the requests from frontend, for example, when user click a tile and send the action to server, django channel returns the new game data to the user. It also notify frontend when game data changes.
 
 ## Run locally
 1. Create a python 3.6 virtualenv
@@ -10,6 +21,7 @@ A minesweeper game built with Django Channel and Vue
 
 ```shell
 pip install -r requirements/dev.txt
+bower i
 ```
 
 3. Run the dev server
@@ -62,7 +74,31 @@ Corresponding data 2 (viewed by user, -2 means hidden):
 
 ![data][example-data-2]
 
+Tile 0:
+![tile -0][tile-0]
+
+Tile -1:
+![tile -1][tile-1]
+
+Tile -2:
+![tile -2][tile-2]
+
+Tile -3:
+![tile -3][tile-3]
+
+Tile -4:
+![tile -4][tile-4]
+
+Tile -5:
+![tile -5][tile-5]
+
 [example-game]: http://i.imgur.com/7Lj4oZC.png
 [example-data]: http://imgur.com/1aY4eXw.png
 [example-game-2]: http://imgur.com/JNVKCjA.png
 [example-data-2]: http://imgur.com/XhEpOhD.png
+[tile-0]: http://i.imgur.com/hlaMAdW.png
+[tile-1]: http://i.imgur.com/9OPaqwj.png
+[tile-2]: http://i.imgur.com/lQiLk0f.png
+[tile-3]: http://i.imgur.com/8k9qw3a.png
+[tile-4]: http://i.imgur.com/uldNo1D.png
+[tile-5]: http://i.imgur.com/fIfDipg.png

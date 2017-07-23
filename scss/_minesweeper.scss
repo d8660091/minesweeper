@@ -1,6 +1,9 @@
 .minesweeper__row {
-    line-height: 16px;
-    height: 16px;
+    font-size: 0;
+    line-height: 0;
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: center;
 }
 
 @for $i from 0 through 8 {
@@ -22,11 +25,104 @@
     display: inline-block;
 }
 
-// black
+// empty
 .minesweeper__tile-2 {
     background-image: url('../images/sprite100.gif');
     background-position: 0 -39px;
     width: 16px;
     height: 16px;
     display: inline-block;
+
+    &.mousedown {
+        background-position: 0px -23px;
+    }
+}
+
+// undiscovered mine
+.minesweeper__tile-3 {
+    background-image: url('../images/sprite100.gif');
+    background-position: -64px -39px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+// mistaken
+.minesweeper__tile-4 {
+    background-image: url('../images/sprite100.gif');
+    background-position: -48px -39px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+// bomdeath
+.minesweeper__tile-5 {
+    background-image: url('../images/sprite100.gif');
+    background-position: -32px -39px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+// bomdeath
+.minesweeper__borderlr {
+    background-image: url('../images/sprite100.gif');
+    background-position: -134px -39px;
+    width: 10px;
+    height: 16px;
+    display: inline-block;
+}
+
+// top bottom border
+.minesweeper__bordertb {
+    background-image: url('../images/sprite100.gif');
+    background-position: -40px -81px;
+    width: 16px;
+    height: 10px;
+    display: inline-block;
+}
+
+// bottom left border
+.minesweeper__borderbl {
+    background-image: url('../images/sprite100.gif');
+    background-position: -20px -81px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+
+// bottom right border
+.minesweeper__borderbr {
+    background-image: url('../images/sprite100.gif');
+    background-position: -30px -81px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+
+// top left border
+.minesweeper__bordertl {
+    background-image: url('../images/sprite100.gif');
+    background-position: 0 -81px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+
+// top right border
+.minesweeper__bordertr {
+    background-image: url('../images/sprite100.gif');
+    background-position: -10px -81px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+
+.minesweeper__placeholder {
+    height: 300px;
+}
+
+.minesweeper__restart-btn {
+    width: 100%;
 }

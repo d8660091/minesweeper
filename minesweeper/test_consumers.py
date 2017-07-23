@@ -38,6 +38,17 @@ class ConsumersTests(ChannelTestCase):
                                     path='/minesweeper/stream/1')
             self.assertEqual(client.receive()['type'], 'game_change')
 
+            client.send_and_consume('websocket.receive',
+                                    text=json.dumps({
+                                        'type': 'restart',
+                                        'data': {
+                                            'x': 0,
+                                            'y': 0,
+                                        }
+                                    }),
+                                    path='/minesweeper/stream/1')
+            self.assertEqual(client.receive()['type'], 'game_change')
+
     def test_game_server_for_multiplayers(self):
         client1 = WSClient()
         client2 = WSClient()

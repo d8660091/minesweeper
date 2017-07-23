@@ -145,3 +145,51 @@ class GameTests(TestCase):
         game.game_mask[1, 1] = 1
         game.mark(1, 1)
         self.assertEqual(game.get_user_map()[1, 1], 1)
+
+    def test_game_can_end_by_mistake(self):
+        game = Game()
+        game.new(3, 3, 1)
+        game.game_map = np.array([[0, 0, 0],
+                                  [0, 0, 0],
+                                  [0, 0, -1]])
+        game.flush()
+        game.game_mask[1, 1] = 1
+        game.reveal(2, 2)
+        self.assertEqual(game.game_ended, True)
+        self.assertEqual(game.game_mask[2, 2], -2)
+
+    def test_game_is_not_ended_after_calling_new(self):
+        game = Game()
+        game.game_ended = True
+        game.new(3, 3, 1)
+        self.assertEqual(game.game_ended, False)
+
+    def test_user_map_is_rendered_after_game_end(self):
+        game = Game()
+        game.game_ended = True
+        game.game_map = np.array([[0, 0, 0, 0, 0, 0, 0, 0],
+                                  [0, 0, 0, -1, 0, 0, 0, 0],
+                                  [0, 0, 0, 0, 0, -1, 0, 0]])
+        game.flush()
+        game.game_mask = np.array([[1, 1, 1, -1, 0, 0, 0, 0],
+                                  [1, 1, 1, -2, 0, 0, 0, 0],
+                                  [1, 1, 1, 1, 0, 0, 0, 0]])
+        game.game_ended = True
+        self.assertTrue(
+            np.array_equal(game.get_user_map(),
+                           np.array([[0, 0, 1, -4, -2, -2, -2, -2],
+                                     [0, 0, 1, -5, -2, -2, -2, -2],
+                                     [0, 0, 1, 1, -2, -3, -2, -2]]))
+        )
+
+    def test_reveal_does_not_work_if_game_is_ended(self):
+        game = Game()
+        game.new(3, 3, 1)
+        game.game_map = np.array([[0, 0, 0],
+                                  [0, 0, 0],
+                                  [0, 0, -1]])
+        game.flush()
+        game.game_ended = True
+        self.assertEqual(game.game_mask[0, 0], 0)
+        game.reveal(0, 0)
+        self.assertEqual(game.game_mask[0, 0], 0)

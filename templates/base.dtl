@@ -6,15 +6,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}The Web framework for perfectionists with deadlines{% endblock %} | Django</title>
+    <title>{% block title %}Minesweeper{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "js/lib/bootstrap/dist/css/bootstrap.min.css" %}" >
     <link rel="stylesheet" href="{% static "css/main.css" %}" >
     {% block head_extra %}{% endblock head_extra %}
   </head>
   <body>
+    <nav class="navbar navbar-light bg-faded mb-5">
+      <div class="container">
+        <h1 class="navbar-brand mb-0">
+          Minesweeper game
+        </h1>
+      </div>
+    </nav>
     <script src="{% static "js/lib/jquery/dist/jquery.min.js" %}"></script>
-    <script src="{% static "js/lib/vue/dist/vue.js" %}"></script>
-    {#% include "includes/header.html" %#}
-    {% block content %}{% endblock %}
-    {#% include "includes/footer.html" %#}
+    <script src="{% static "js/lib/lodash/dist/lodash.min.js" %}"></script>
+    <script src="{% static "js/lib/vue/dist/vue.min.js" %}"></script>
+    <div class="container content">
+      {#% include "includes/header.html" %#}
+      {% block content %}{% endblock %}
+      {#% include "includes/footer.html" %#}
+    </div>
+
+    <footer class="mt-5">
+      <div class="container mt-2 text-right">
+        Built with ❤ by <a target="_blank" href="https://github.com/d8660091">Xu Deng</a>
+      </div>
+    </footer>
   </body>
 </html>

@@ -58,7 +58,7 @@
         <strong>Introduction</strong>
       </p>
       <p>
-        A multiplayer online minesweeper game built with Django Channel and Vue. You can go to url with <em>hostname/game-id</em> to any game session, the default session-id is 1. You can share the url to friends to play together. <br/>
+        A multiplayer online minesweeper game built with Django Channel and Vue. You can go to url with <em>hostname/game-id</em> to any game session, the default session-id is 1. You can share the url with friends to play together. <br/>
       </p>
       <p>
         Tips: <br/>

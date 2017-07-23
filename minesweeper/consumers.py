@@ -24,9 +24,6 @@ def send_update(sender, instance, **kwargs):
 class GameConsumer(JsonWebsocketConsumer):
     """Game server which handles websockets."""
 
-    # channel_session = True
-    # strict_ordering = True
-
     def connection_groups(self, **kwargs):
         return ['test']
 
@@ -44,10 +41,7 @@ class GameConsumer(JsonWebsocketConsumer):
             x = content['data']['x']
             y = content['data']['y']
             game.reveal(x, y)
-            if game.game_ended:
-                game.save()
-            else:
-                game.save()
+            game.save()
         elif content['type'] == 'mark':
             x = content['data']['x']
             y = content['data']['y']

@@ -4,7 +4,7 @@
 
 ### minesweeper.xudeng.io
 
-A multiplayer online minesweeper game built with Django Channel and Vue
+A multiplayer online minesweeper game built with Django Channel and Vue. It can be accessed from 159.203.53.11 if DNS does not work yet.
 
 ## Introduction
 

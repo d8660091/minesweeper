@@ -21,10 +21,17 @@ Websocket is used to provide a stable, low-latency, bi-directional connection. U
 
 ```shell
 pip install -r requirements/dev.txt
-bower i
+bower install
 ```
 
-3. Run the dev server
+3. Create tables:
+
+``` shell
+python manage.py migrate
+
+```
+
+4. Run the dev server
 
 ``` shell
 python manage.py runserver

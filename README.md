@@ -4,7 +4,7 @@
 
 ![screenshot][screenshot]
 
-### minesweeper.xudeng.io
+### [minesweeper.xudeng.io](http://minesweeper.xudeng.io)
 
 A multiplayer online minesweeper game built with Django Channel and Vue.
 

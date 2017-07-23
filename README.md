@@ -16,7 +16,7 @@ A multiplayer online minesweeper game built with Django Channel and Vue.
 
 * __Websocket__ is used to provide a stable, low-latency, bi-directional connection. Users can play the game in their browser without noticing the game core is on the backend. 
 
-* __Django__ Channel is responsible for handling the requests from frontend, for example, when user clicks a tile and send the action to the server, Django Channel returns the new game data to the user. It also notifies the frontend actively when it detects data changing of game data in the database.
+* __Django Channel__ is responsible for handling the requests from frontend, for example, when user clicks a tile and send the action to the server, Django Channel returns the new game data to the user. It also notifies the frontend actively when it detects data changing of game data in the database.
 
 ## Run locally
 1. Create a Python 3.6 virtualenv

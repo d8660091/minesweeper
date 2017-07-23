@@ -1,0 +1,37 @@
+version: '2'
+services:
+  nginx:
+    build: './docks/nginx'
+    ports:
+      - '80:80'
+    volumes:
+      - ./static:/static
+    depends_on:
+      - web
+  redis:
+    image: redis:alpine
+  web:
+    build: .
+    environment:
+        - DJANGO_SETTINGS_MODULE=mysite.settings.prod
+    command: gunicorn mysite.wsgi -b :8000
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+  channel-worker:
+    build: .
+    environment:
+        - DJANGO_SETTINGS_MODULE=mysite.settings.prod
+    command: python3 manage.py runworker
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+  daphne:
+    build: .
+    environment:
+        - DJANGO_SETTINGS_MODULE=mysite.settings.prod
+    command: daphne mysite.asgi:channel_layer -p 8001 -b 0.0.0.0
+    volumes:
+      - .:/code

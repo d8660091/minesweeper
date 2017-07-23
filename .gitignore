@@ -4,6 +4,7 @@ db.sqlite3
 .tox
 .sass-cache
 .coverage
+/static/
 htmlcov
-static/js/lib
+/mysite/static/js/lib
 README.html

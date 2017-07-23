@@ -80,22 +80,23 @@ Corresponding data 2 (viewed by user, -2 means hidden):
 
 ![data][example-data-2]
 
-Tile 0:
+### Special Tiles
+* Tile 0:
 ![tile -0][tile-0]
 
-Tile -1:
+* Tile -1:
 ![tile -1][tile-1]
 
-Tile -2:
+* Tile -2:
 ![tile -2][tile-2]
 
-Tile -3:
+* Tile -3:
 ![tile -3][tile-3]
 
-Tile -4:
+* Tile -4:
 ![tile -4][tile-4]
 
-Tile -5:
+* Tile -5:
 ![tile -5][tile-5]
 
 [screenshot]: http://imgur.com/a4noUAr.png

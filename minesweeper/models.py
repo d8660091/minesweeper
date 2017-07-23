@@ -40,7 +40,7 @@ class Game():
         (h, w) = self.game_map.shape
         for (x, y), value in np.ndenumerate(self.game_map):
             if value == -1:
-                for i, j in itertools.product([x-1, x, x+1], [y-1, y, y + 1]):
+                for i, j in itertools.product([x - 1, x, x + 1], [y - 1, y, y + 1]):
                     if (0 <= i < h) and (0 <= j < w) and self.game_map[i, j] != -1:
                         self.game_map[i, j] += 1
 
@@ -70,7 +70,7 @@ class Game():
             self.game_mask[x, y] = 1
         else:
             self.game_mask[x, y] = 1
-            for i, j in itertools.product([x-1, x, x+1], [y-1, y, y + 1]):
+            for i, j in itertools.product([x - 1, x, x + 1], [y - 1, y, y + 1]):
                 if (0 <= i < h) and (0 <= j < w) and self.game_map[i, j] != -1:
                     self.reveal(i, j)
 

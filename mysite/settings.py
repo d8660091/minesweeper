@@ -139,3 +139,10 @@ CHANNEL_LAYERS = {
         "ROUTING": "mysite.routing.channel_routing",
     },
 }
+
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "asgi_redis.RedisChannelLayer",
+#         "ROUTING": "mysite.routing.channel_routing",
+#     },
+# }

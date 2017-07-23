@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.com/d8660091/minesweeper.svg?token=poM8cpAzssr1tR1xqCdN&branch=master)](https://travis-ci.com/d8660091/minesweeper)
 [![Coverage Status](https://coveralls.io/repos/github/d8660091/minesweeper/badge.svg?t=RwWiOT)](https://coveralls.io/github/d8660091/minesweeper)
 
+![screenshot][screenshot]
+
 ### minesweeper.xudeng.io
 
 A multiplayer online minesweeper game built with Django Channel and Vue.
@@ -96,6 +98,7 @@ Tile -4:
 Tile -5:
 ![tile -5][tile-5]
 
+[screenshot]: http://imgur.com/a4noUAr.png
 [example-game]: http://i.imgur.com/7Lj4oZC.png
 [example-data]: http://imgur.com/1aY4eXw.png
 [example-game-2]: http://imgur.com/JNVKCjA.png

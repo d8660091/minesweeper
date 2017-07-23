@@ -15,7 +15,7 @@ Vue is used for rendering the game graphics. But the priority for frontend is no
 Sqlite3 is used for prototyping. Postgres or Mysql may be used for production.
 
 ### Django Channel and Websocket
-Websocket is used to provide a stable, low-latency, bi-directional connection. Users can play the game in browser without noticing the game core is on the backend. Django Channel is responsible for handling the requests from frontend, for example, when user click a tile and send the action to server, django channel returns the new game data to the user. It also notify frontend when game data changes.
+Websocket is used to provide a stable, low-latency, bi-directional connection. Users can play the game in browser without noticing the game core is on the backend. Django Channel is responsible for handling the requests from frontend, for example, when user click a tile and send the action to server, django channel returns the new game data to the user. It also notify the frontend when it detect data change of gamedata in the database.
 
 ## Run locally
 1. Create a python 3.6 virtualenv

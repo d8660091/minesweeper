@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.com/d8660091/minesweeper.svg?token=poM8cpAzssr1tR1xqCdN&branch=master)](https://travis-ci.com/d8660091/minesweeper)
 [![Coverage Status](https://coveralls.io/repos/github/d8660091/minesweeper/badge.svg?t=RwWiOT)](https://coveralls.io/github/d8660091/minesweeper)
 
+minesweeper.xudeng.io
 A multiplayer online minesweeper game built with Django Channel and Vue
 
 ## Introduction
@@ -48,6 +49,13 @@ You can view the coverage report with
 
 ``` shell
 coverage report
+```
+
+## Deploy
+Make sure you have migrated data and collected static files, the path ./static is used for storing static files.
+
+``` shell
+docker-compose up
 ```
 
 ## Frontend

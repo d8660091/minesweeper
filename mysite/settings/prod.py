@@ -15,6 +15,8 @@ CHANNEL_LAYERS = {
 ALLOWED_HOSTS = [
     "web",
     "127.0.0.1",
+    "159.203.53.11",
+    "minesweeper.xudeng.io",
 ]
 
 STATIC_ROOT = '/static'

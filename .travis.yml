@@ -4,8 +4,9 @@ language: python
 python:
   - "3.6"
 env:
-  - TOXENV=py36-tests
-  - TOXENV=py36-flake8
+  matrix:
+    - TOXENV=py36-tests
+    - TOXENV=py36-flake8
 install:
   - pip install coveralls tox
 script:

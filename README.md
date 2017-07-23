@@ -4,21 +4,20 @@
 
 ### minesweeper.xudeng.io
 
-A multiplayer online minesweeper game built with Django Channel and Vue. It can be accessed from 159.203.53.11 if DNS does not work yet.
+A multiplayer online minesweeper game built with Django Channel and Vue.
 
 ## Introduction
 
-### Vue
-Vue is used for rendering the game graphics. But the priority for frontend is not high since it's much more important to guarantee bug-free backend, so webpack with live reloading is not set.
+* __Vue__ is used for rendering the game graphics. But the priority for frontend is not high since it's much more important to guarantee bug-free backend, so webpack with live reloading is not set.
 
-### Database
-Sqlite3 is used for prototyping. Postgres or Mysql may be used for production.
+* __sqlite3__ is used for prototyping. Postgres or Mysql may be used for production.
 
-### Django Channel and Websocket
-Websocket is used to provide a stable, low-latency, bi-directional connection. Users can play the game in browser without noticing the game core is on the backend. Django Channel is responsible for handling the requests from frontend, for example, when user click a tile and send the action to server, django channel returns the new game data to the user. It also notify the frontend when it detect data change of gamedata in the database.
+* __Websocket__ is used to provide a stable, low-latency, bi-directional connection. Users can play the game in their browser without noticing the game core is on the backend. 
+
+* __Django__ Channel is responsible for handling the requests from frontend, for example, when user clicks a tile and send the action to the server, Django Channel returns the new game data to the user. It also notifies the frontend actively when it detects data changing of game data in the database.
 
 ## Run locally
-1. Create a python 3.6 virtualenv
+1. Create a Python 3.6 virtualenv
 2. Install dependencies
 
 ```shell
@@ -59,20 +58,9 @@ Make sure you have migrated data and collected static files, the path ./static i
 docker-compose up
 ```
 
-## Frontend
-Connect to backend with
-
-``` javascript
-webSocketBridge.listen(`/minesweeper/stream/${session-id}`)
-```
-
-Vue app, game is rendered with mainly css.
-
-## Backend
-Django with channels.
-Game data is stored in sqlite3, but can be easily changed to other databases if desired.
-
 ## Map
+
+Game data is composed of mainly two arrays, game_data and game_mask. Game_data is the underlying matrix that contains the 'true' data of the game, which should be hidden from users. So game_mask's responsibility is to keep track of the game's progress and reveal only the visible information to users. When we combine game_data and game_mask with some matrix operations, we can get a user_map which is passed to the frontend to be rendered by Vue.
 
 Rendered game 1:
 

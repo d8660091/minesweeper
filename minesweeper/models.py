@@ -26,8 +26,8 @@ class Game():
 
     # Reconstruct the game
     def new(self, w, h, mines_total):
-        w = min(w, 60)
-        h = min(h, 60)
+        w = min(w, 50)
+        h = min(h, 50)
         non_mines_count = max(w * h - mines_total, 0)
         mines_count = min(w * h, mines_total)
         tmp_map = np.full(non_mines_count, 0)

@@ -46,7 +46,7 @@ class Game():
 
     # Users mark the position of mine in their opionions
     def mark(self, x, y):
-        if self.get_user_map()[x, y] > 0:
+        if self.get_user_map()[x, y] >= 0 or self.game_ended:
             return
         elif self.get_user_map()[x, y] == -1:
             self.game_mask[x, y] = 0

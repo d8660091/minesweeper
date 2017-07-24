@@ -2,6 +2,9 @@ from django.db import models
 import json
 import numpy as np
 import itertools
+import sys
+
+sys.setrecursionlimit(3000)
 
 
 class GameData(models.Model):
@@ -70,7 +73,7 @@ class Game():
             return
         elif self.game_map[x, y] > 0:
             self.game_mask[x, y] = 1
-        else:
+        elif self.game_map[x, y] == 0 and self.game_mask[x, y] == 0:
             self.game_mask[x, y] = 1
             for i, j in itertools.product([x - 1, x, x + 1], [y - 1, y, y + 1]):
                 if (0 <= i < h) and (0 <= j < w) and self.game_map[i, j] != -1:

@@ -216,3 +216,8 @@ class GameTests(TestCase):
         game.game_map[0, 0] = 0
         game.mark(0, 0)
         self.assertNotEqual(game.game_mask[0, 0], -1)
+
+    def test_do_oversize(self):
+        game = Game()
+        game.new(61, 61, 1)
+        self.assertEqual(game.game_map.shape, (60, 60))

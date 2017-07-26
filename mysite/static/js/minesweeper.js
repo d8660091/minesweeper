@@ -49,7 +49,7 @@
         b.socket.addEventListener('open', this.handleConnectionOpen)
       },
       handleTileClickLeft: function(x, y, e) {
-        if (e.ctrlKey) return;
+        if (e.ctrlKey || e.metaKey) return;
         // console.log(x, y, 'tile clicked');
         this.requestReveal(x, y);
       },
@@ -72,7 +72,7 @@
         }
       },
       handleTileMousedown: function(x, y, e) {
-        if (e.ctrlKey) {
+        if (e.ctrlKey || e.metaKey) {
           var res = getNbs(this.map, x, y);
           res.nbs.forEach(function(position) {
             var selector = '#tile-' + position.x + '-' + position.y;

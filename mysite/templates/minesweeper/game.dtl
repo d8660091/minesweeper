@@ -20,6 +20,7 @@
             :class="'minesweeper__tile' + map[x][y]"
             :id="'tile-'+ x + '-' + y"
             @click.prevent.ctrl="handleTileClickMiddle(x, y)"
+            @click.prevent.cmd="handleTileClickMiddle(x, y)"
             @click.left="handleTileClickLeft(x, y, $event)"
             @mousedown="handleTileMousedown(x, y, $event)"
             @contextmenu.prevent="handleTileClickRight(x, y)">
@@ -64,7 +65,7 @@
         Tips: <br/>
         left click to reveal tile <br/>
         right click to mark mine <br/>
-        ctrl+left click to reveal surrounding tile <br/>
+        ctrl/cmd + left click to reveal surrounding tile <br/>
       </p>
     </div>
   </div>

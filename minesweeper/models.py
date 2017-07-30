@@ -1,7 +1,6 @@
 from django.db import models
 import json
 import numpy as np
-import itertools
 import sys
 
 sys.setrecursionlimit(3000)
@@ -41,13 +40,13 @@ class Game():
     # Flush numbers around mines, since game_map initially contains only the info of mines
     def flush(self):
 
-        # Change surrounding tiles around mines, it may be optmized in the futre Notice that x y is reversing h w
+        # Change surrounding tiles around mines. Notice that x y is reversing h w
         (h, w) = self.game_map.shape
         for (x, y), value in np.ndenumerate(self.game_map):
             if value == -1:
-                for i, j in itertools.product([x - 1, x, x + 1], [y - 1, y, y + 1]):
-                    if (0 <= i < h) and (0 <= j < w) and self.game_map[i, j] != -1:
-                        self.game_map[i, j] += 1
+                for i, j in [(i, j) for i in [x - 1, x, x + 1] for j in [y - 1, y, y + 1]
+                             if (0 <= i < h) and (0 <= j < w) and self.game_map[i, j] != -1]:
+                    self.game_map[i, j] += 1
 
     # Users mark the position of mine in their opionions
     def mark(self, x, y):
@@ -64,7 +63,9 @@ class Game():
 
         if self.game_ended:
             return
+
         (h, w) = self.game_map.shape
+
         if self.game_mask[x, y] != 0:
             return
         elif self.game_map[x, y] < 0:
@@ -75,9 +76,9 @@ class Game():
             self.game_mask[x, y] = 1
         elif self.game_map[x, y] == 0 and self.game_mask[x, y] == 0:
             self.game_mask[x, y] = 1
-            for i, j in itertools.product([x - 1, x, x + 1], [y - 1, y, y + 1]):
-                if (0 <= i < h) and (0 <= j < w) and self.game_map[i, j] != -1:
-                    self.reveal(i, j)
+            for i, j in [(i, j) for i in [x - 1, x, x + 1] for j in [y - 1, y, y + 1]
+                         if (0 <= i < h) and (0 <= j < w) and self.game_map[i, j] != -1]:
+                self.reveal(i, j)
 
     # Render the user visible map, users cannot access the 'true' map
     def get_user_map(self):
